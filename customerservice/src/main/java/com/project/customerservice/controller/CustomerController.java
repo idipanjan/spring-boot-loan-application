@@ -25,12 +25,12 @@ public class CustomerController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("id") Long customerId){
-        return new ResponseEntity<>(customerService.getCustomer(customerId), HttpStatus.CREATED);
+        return new ResponseEntity<>(customerService.getCustomer(customerId), HttpStatus.OK);
     }
 
     @GetMapping("/")
     public ResponseEntity<List<Customer>> getCustomers(){
-        return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.CREATED);
+        return new ResponseEntity<>(customerService.getCustomers(), HttpStatus.OK);
     }
 
     @DeleteMapping("/{id}")
