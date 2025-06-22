@@ -1,6 +1,6 @@
 package com.project.loanservice.controller;
 
-import com.project.loanservice.model.Loan;
+import com.project.loanservice.entity.Loan;
 import com.project.loanservice.service.LoanService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.project.bankservice.service;
 
-import com.project.bankservice.model.Bank;
+import com.project.bankservice.entity.Bank;
 
 import java.util.List;
 

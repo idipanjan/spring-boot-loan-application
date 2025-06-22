@@ -1,6 +1,6 @@
 package com.project.customerservice.service;
 
-import com.project.customerservice.model.Customer;
+import com.project.customerservice.entity.Customer;
 
 import java.util.List;
 
