@@ -30,4 +30,10 @@ public class Bank {
     @NotNull(message = "bank address is mandatory")
     @NotBlank(message = "bank address cannot be blank")
     private String address;
+
+    public Bank(String name, String branch, String address) {
+        this.name = name;
+        this.branch = branch;
+        this.address = address;
+    }
 }
