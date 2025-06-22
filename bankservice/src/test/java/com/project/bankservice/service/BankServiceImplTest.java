@@ -1,6 +1,7 @@
 package com.project.bankservice.service;
 
 import com.project.bankservice.entity.Bank;
+import com.project.bankservice.exception.ResourceNotFoundException;
 import com.project.bankservice.repository.BankRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -10,6 +11,7 @@ import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -37,14 +39,27 @@ class BankServiceImplTest {
     }
 
     @Test
-    void getBankById() {
+    void getBankById_found() {
         Long bankId = 1L;
         Bank bank = new Bank("Axis Bank", "mumbai", "Mumbai, India");
         bank.setId(bankId);
-        Mockito.when(bankRepository.findById(bankId)).thenReturn(java.util.Optional.of(bank));
+        Mockito.when(bankRepository.findById(bankId)).thenReturn(Optional.of(bank));
 
         Bank foundBank = bankService.getBankById(bankId);
         assertEquals(bank,foundBank);
+        Mockito.verify(bankRepository).findById(bankId);
+    }
+
+    @Test
+    void getBankById_not_found() {
+        Long bankId = 1L;
+        Mockito.when(bankRepository.findById(bankId)).thenReturn(Optional.empty());
+
+        ResourceNotFoundException exception = assertThrows(
+                ResourceNotFoundException.class,
+                () -> bankService.getBankById(bankId)
+        );
+        assertEquals("Bank not found with id " + bankId, exception.getMessage());
         Mockito.verify(bankRepository).findById(bankId);
     }
 
@@ -61,15 +76,29 @@ class BankServiceImplTest {
     }
 
     @Test
-    void deleteBank() {
+    void deleteBank_Id_found() {
         Long bankId = 1L;
         Bank bank = new Bank("Axis Bank", "mumbai", "Mumbai, India");
         bank.setId(bankId);
-        Mockito.when(bankRepository.findById(bankId)).thenReturn(java.util.Optional.of(bank));
+        Mockito.when(bankRepository.findById(bankId)).thenReturn(Optional.of(bank));
 
         Long deletedBankId = bankService.deleteBank(bankId);
         assertEquals(bankId, deletedBankId);
         Mockito.verify(bankRepository).findById(bankId);
         Mockito.verify(bankRepository).delete(bank);
     }
+    @Test
+    void deleteBank_Id_not_found() {
+        Long bankId = 1L;
+        Mockito.when(bankRepository.findById(bankId)).thenReturn(Optional.empty());
+
+        ResourceNotFoundException exception = assertThrows(
+                ResourceNotFoundException.class,
+                () -> bankService.deleteBank(bankId)
+        );
+        assertEquals("Bank not found with id: " + bankId, exception.getMessage());
+        Mockito.verify(bankRepository).findById(bankId);
+        Mockito.verify(bankRepository, Mockito.never()).delete(Mockito.any());
+    }
+
 }
