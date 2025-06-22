@@ -1,6 +1,6 @@
 package com.project.bankservice.controller;
 
-import com.project.bankservice.model.Bank;
+import com.project.bankservice.entity.Bank;
 import com.project.bankservice.service.BankService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

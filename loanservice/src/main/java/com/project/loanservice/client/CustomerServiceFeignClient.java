@@ -1,7 +1,7 @@
 package com.project.loanservice.client;
 
 
-import com.project.loanservice.model.Customer;
+import com.project.loanservice.entity.Customer;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

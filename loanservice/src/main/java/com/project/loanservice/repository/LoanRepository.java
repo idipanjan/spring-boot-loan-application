@@ -1,6 +1,6 @@
 package com.project.loanservice.repository;
 
-import com.project.loanservice.model.Loan;
+import com.project.loanservice.entity.Loan;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -3,17 +3,15 @@ package com.project.loanservice.service;
 import com.project.loanservice.client.BankServiceFeignClient;
 import com.project.loanservice.client.CustomerServiceFeignClient;
 import com.project.loanservice.exception.ClientException;
-import com.project.loanservice.model.Bank;
-import com.project.loanservice.model.Customer;
-import com.project.loanservice.model.Loan;
+import com.project.loanservice.entity.Bank;
+import com.project.loanservice.entity.Customer;
+import com.project.loanservice.entity.Loan;
 import com.project.loanservice.repository.LoanRepository;
 import feign.FeignException;
 import io.github.resilience4j.retry.annotation.Retry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-
-import java.net.ConnectException;
 
 @Service
 public class LoanServiceImpl implements LoanService{

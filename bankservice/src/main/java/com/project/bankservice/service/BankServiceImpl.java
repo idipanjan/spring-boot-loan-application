@@ -1,10 +1,9 @@
 package com.project.bankservice.service;
 
 import com.project.bankservice.exception.ResourceNotFoundException;
-import com.project.bankservice.model.Bank;
+import com.project.bankservice.entity.Bank;
 import com.project.bankservice.repository.BankRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

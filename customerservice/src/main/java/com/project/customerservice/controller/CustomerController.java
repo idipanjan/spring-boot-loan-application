@@ -1,8 +1,7 @@
 package com.project.customerservice.controller;
 
-import com.project.customerservice.model.Customer;
+import com.project.customerservice.entity.Customer;
 import com.project.customerservice.service.CustomerService;
-import com.project.customerservice.service.CustomerServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
